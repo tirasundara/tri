@@ -48,10 +48,13 @@ func addRun(cmd *cobra.Command, args []string) {
 	}
 }
 
+var priority int
+
 func init() {
 	rootCmd.AddCommand(addCmd)
 
 	// Here you will define your flags and configuration settings.
+	addCmd.Flags().IntVarP(&priority, "priority", "p", 2, "Priority:1,2,3")
 
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
