@@ -36,7 +36,12 @@ to quickly create a Cobra application.`,
 }
 
 func addRun(cmd *cobra.Command, args []string) {
-	items := []todo.Item{}
+	var items []todo.Item
+
+	items, err := todo.ReadItems(dataFile)
+	if err != nil {
+		fmt.Printf("%v", err)
+	}
 
 	for _, arg := range args {
 		item := todo.Item{Text: arg}
@@ -44,7 +49,7 @@ func addRun(cmd *cobra.Command, args []string) {
 		items = append(items, item)
 	}
 
-	err := todo.SaveItems(dataFile, items)
+	err = todo.SaveItems(dataFile, items)
 	if err != nil {
 		fmt.Printf("%v", err)
 	}
