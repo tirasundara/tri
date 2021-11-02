@@ -21,6 +21,16 @@ func (i *Item) SetPriority(pri int) {
 	}
 }
 
+func (i *Item) PrettyP() string {
+	if i.Priority == 1 {
+		return "(1)"
+	} else if i.Priority == 3 {
+		return "(3)"
+	}
+
+	return " "
+}
+
 func SaveItems(filename string, items []Item) error {
 	b, err := json.Marshal(items)
 	if err != nil {
