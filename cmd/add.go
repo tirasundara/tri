@@ -42,7 +42,7 @@ func addRun(cmd *cobra.Command, args []string) {
 		items = append(items, todo.Item{Text: arg})
 	}
 
-	err := todo.SaveItems("/Users/tirasundara/Documents/code/tri/.tridos.json", items)
+	err := todo.SaveItems(dataFile, items)
 	if err != nil {
 		fmt.Printf("%v", err)
 	}
